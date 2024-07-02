@@ -1,31 +1,26 @@
 package main
 
 import (
-	"github.com/go-chi/chi/v5"
 	"log/slog"
 	"net/http"
 	"os"
 	"task1/internal/config"
+	"task1/internal/router"
 )
 
-type Application struct {
-	config *config.Config
-	logger *slog.Logger
-}
-
 func main() {
-	cfg := *config.MustLoad()
+	cfg := config.MustLoad()
 
 	logger := slog.New(slog.NewTextHandler(os.Stderr, nil))
 
 	logger.Info(cfg.HttpServer.Port)
+	logger.Info(cfg.HttpServer.Host)
 
-	router := chi.NewRouter()
+	r := router.Router()
 
-	router.Get("/", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("welcome"))
-	})
-
-	http.ListenAndServe("localhost:8080", router)
+	err := http.ListenAndServe(cfg.Host+":"+cfg.Port, r)
+	if err != nil {
+		return
+	}
 
 }
