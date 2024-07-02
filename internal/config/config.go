@@ -3,7 +3,6 @@ package config
 import (
 	"github.com/ilyakaznacheev/cleanenv"
 	"log"
-	"log/slog"
 )
 
 type Config struct {
@@ -14,11 +13,6 @@ type Config struct {
 type HttpServer struct {
 	Port string `yaml:"port"`
 	Host string `yaml:"host"`
-}
-
-type Application struct {
-	Config Config
-	Logger *slog.Logger
 }
 
 func MustLoad() *Config {
