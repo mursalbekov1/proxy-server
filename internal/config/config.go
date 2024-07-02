@@ -1,18 +1,17 @@
 package config
 
-import "os"
-
 type Config struct {
 	env        string `yaml:"env"`
 	HttpServer `yaml:"http-server"`
 }
 
 type HttpServer struct {
-	port int `yaml:"port"`
+	Port string `yaml:"port"`
+	Host string `yaml:"host"`
 }
 
 func MustLoad() *Config {
-	configPath := os.Getenv("CONFIG_PATH")
+	configPath := "config/config.yaml"
 	if configPath == "" {
 		panic("CONFIG_PATH is required")
 	}
