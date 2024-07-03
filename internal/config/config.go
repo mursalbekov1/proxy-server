@@ -16,7 +16,7 @@ type HttpServer struct {
 }
 
 func MustLoad() *Config {
-	configPath := "config/config.yaml" // need to take from env
+	configPath := "config.yaml" // need to take from env
 
 	var cfg Config
 

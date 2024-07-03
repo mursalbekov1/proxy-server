@@ -18,7 +18,7 @@ func main() {
 
 	r := router.Router()
 
-	err := http.ListenAndServe(cfg.Host+":"+cfg.Port, r)
+	err := http.ListenAndServe(":"+cfg.Port, r)
 	if err != nil {
 		logger.Error("Error starting server: %v", err)
 	}
