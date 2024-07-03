@@ -16,12 +16,12 @@ type HttpServer struct {
 }
 
 func MustLoad() *Config {
-	configPath := "config/config.yaml"
+	configPath := "config/config.yaml" // need to take from env
 
 	var cfg Config
 
 	if err := cleanenv.ReadConfig(configPath, &cfg); err != nil {
-		log.Fatalf("cannot read config: %s", err)
+		log.Fatalf("Error reading config: %v", err)
 	}
 
 	return &cfg

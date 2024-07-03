@@ -20,7 +20,7 @@ func main() {
 
 	err := http.ListenAndServe(cfg.Host+":"+cfg.Port, r)
 	if err != nil {
-		return
+		logger.Error("Error starting server: %v", err)
 	}
 
 }
