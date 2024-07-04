@@ -1,24 +1,24 @@
 DOCKER_COMPOSE_FILE = docker-compose.yml
 
-SERVICE_NAME = proxy-server
+SERVICE_NAME = app
 
 build:
-	docker-compose -f "./docker-compose.yml" build
+	docker-compose -f $(DOCKER_COMPOSE_FILE) build
 
 up:
-	docker-compose -f "./docker-compose.yml" up -d
+	docker-compose -f $(DOCKER_COMPOSE_FILE) up -d
 
 down:
-	docker-compose -f "./docker-compose.yml" down
+	docker-compose -f $(DOCKER_COMPOSE_FILE) down
 
 logs:
-	docker-compose -f "./docker-compose.yml" logs -f $(SERVICE_NAME)
+	docker-compose -f $(DOCKER_COMPOSE_FILE) logs -f $(SERVICE_NAME)
 
 restart:
-	docker-compose -f "./docker-compose.yml" restart $(SERVICE_NAME)
+	docker-compose -f $(DOCKER_COMPOSE_FILE) restart $(SERVICE_NAME)
 
 clean:
-	docker-compose -f "./docker-compose.yml" down -v --rmi all --remove-orphans
+	docker-compose -f $(DOCKER_COMPOSE_FILE) down -v --rmi all --remove-orphans
 
 run:
 	make build
