@@ -1,6 +1,6 @@
 DOCKER_COMPOSE_FILE = docker-compose.yml
 
-SERVICE_NAME = app
+SERVICE_NAME = proxy-server
 
 build:
 	docker-compose -f "./docker-compose.yml" build
